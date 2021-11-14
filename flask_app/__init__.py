@@ -11,8 +11,15 @@ def create_app():
     CLIENT1 = app.config['CLIENT1']
     SECRET = app.config['SECRET']
     PROVIDER_NAME1 = app.config['PROVIDER_NAME1']
+    LOGOUT_URIS = app.config['LOGOUT_URIS']
 
-    PROVIDER_CONFIG = ProviderConfiguration(issuer=ISSUER1, client_metadata=ClientMetadata(CLIENT1, SECRET))
+    PROVIDER_CONFIG = ProviderConfiguration(
+        issuer=ISSUER1,
+        client_metadata=ClientMetadata(
+            CLIENT1, SECRET,
+            post_logout_redirect_uris=LOGOUT_URIS
+        )
+    )
 
     auth = OIDCAuthentication({PROVIDER_NAME1: PROVIDER_CONFIG})
     auth.init_app(app)
