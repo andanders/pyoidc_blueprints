@@ -10,3 +10,4 @@ class Config():
     PERMANENT_SESSION_LIFETIME = datetime.timedelta(days=7).total_seconds()
     DEBUG= True
     SECRET_KEY =  urandom(32)
+    LOGOUT_URIS = ['http://localhost:5000/logout']

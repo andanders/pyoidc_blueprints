@@ -23,3 +23,9 @@ def about():
         return f"things about you: {info}"
     except:
         return f"this user is a mystery"
+
+
+@main_bp.route('/logout')
+@auth.oidc_logout
+def logout_view():
+    return "logged out"
